@@ -49,11 +49,11 @@ And in your controller, use:
     flash[:info] = "Your info message"
 
 This will return
-		
-		<p class="alert alert-success">Your success message</p>
-		<p class="alert alert-notice">Your alert message</p>
-		<p class="alert alert-error">Your error message</p>
-		<p class="alert alert-info">Your info message</p>
+
+    <p class="alert alert-success">Your success message</p>
+    <p class="alert alert-notice">Your alert message</p>
+    <p class="alert alert-error">Your error message</p>
+    <p class="alert alert-info">Your info message</p>
 
 Made for twitter-bootstrap.
 
