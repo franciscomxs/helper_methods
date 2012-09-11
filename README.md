@@ -59,7 +59,7 @@ Made for twitter-bootstrap.
 
 
 And this helps you to manage mobile views
-		mobile_device?
+    mobile_device?
 
 ## Contributing
 
