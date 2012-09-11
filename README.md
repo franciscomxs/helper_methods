@@ -18,6 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
+Included helpers:
+
+    error_messages_for @resource
+    flash_messages
+    mobile_device?
+
 In your forms use:
 
     <%= error_messages_for @resource %>
