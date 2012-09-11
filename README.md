@@ -19,6 +19,7 @@ Or install it yourself as:
 ## Usage
 
 In your forms use:
+
 		<%= error_messages_for @resource %>
 
 And it will return:
