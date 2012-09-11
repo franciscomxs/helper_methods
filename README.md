@@ -20,7 +20,7 @@ Or install it yourself as:
 
 In your forms use:
 
-		<%= error_messages_for @resource %>
+    <%= error_messages_for @resource %>
 
 And it will return:
 
