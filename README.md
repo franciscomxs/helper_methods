@@ -18,14 +18,48 @@ Or install it yourself as:
 
 ## Usage
 
-	On your forms, use:
-		<%= error_messages_for %>
+In your forms use:
+		<%= error_messages_for @resource %>
 
-	On your layout file, use:
-		<%= flash_messages %>
+And it will return:
 
-	And this helps you to crete mobile views
-		<%= mobile_device? %>
+    <ul class="alert alert-error">
+      <li>Error description</li>
+    </ul>
+
+Optionaly, you can pass a css class for ul element:
+
+    <%= error_messages_for @resource, 'my_css_class' %>
+
+And it will return:
+
+    <ul class="my_css_class">
+      <li>Error description</li>
+    </ul>
+
+For using flash messages, in your layout file, do:
+
+    <%= flash_messages %>
+
+And in your controller, use:
+
+    flash[:success] = "Your success message"
+    flash[:notice] = "Your alert message"
+    flash[:error] = "Your error message"
+    flash[:info] = "Your info message"
+
+This will return
+		
+		<p class="alert alert-success">Your success message</p>
+		<p class="alert alert-notice">Your alert message</p>
+		<p class="alert alert-error">Your error message</p>
+		<p class="alert alert-info">Your info message</p>
+
+Made for twitter-bootstrap.
+
+
+And this helps you to manage mobile views
+		mobile_device?
 
 ## Contributing
 
