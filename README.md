@@ -23,6 +23,10 @@ Included helpers:
     error_messages_for @resource
     flash_messages
     mobile_device?
+    youtube('z8WXgoBGRb4')
+    youtube_link('z8WXgoBGRb4')
+    icon('th-large icon-white')
+    textilize
 
 In your forms use:
 
@@ -62,6 +66,14 @@ This will return
     <p class="alert alert-error">Your error message</p>
     <p class="alert alert-info">Your info message</p>
 
+In your views, use
+
+    icon('th-large icon-white')
+
+This will return
+
+    <i class="th-large icon-white"></i>
+    
 Made for twitter-bootstrap.
 
 
