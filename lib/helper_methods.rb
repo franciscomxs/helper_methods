@@ -30,10 +30,6 @@ module HelperMethods
     link_to "www.youtube.com/watch?v=#{video}", "http://www.youtube.com/watch?v=#{video}", class: 'various fancybox-media'
   end
 
-  def textilize(text)
-    RedCloth.new(text).to_html.html_safe
-  end
-
   def icon(icon, text="", direction="l")
     return "<i class='icon-#{icon}'></i> #{text}".html_safe if direction == 'l'
     return "#{text} <i class='icon-#{icon}'></i>".html_safe if direction == 'r'
