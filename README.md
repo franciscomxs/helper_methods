@@ -28,6 +28,30 @@ Included helpers:
     icon('th-large icon-white')
     textilize
 
+### Youtube helpers
+
+In your views, use:
+
+    youtube('z8WXgoBGRb4')
+
+And it will become:
+
+    <iframe width='580' height='420'
+        src='http://www.youtube.com/embed/z8WXgoBGRb4'
+        frameborder='0'
+        allowfullscreen>
+    </iframe>
+
+If you want the complete link, use:
+
+    youtube_link('z8WXgoBGRb4')
+
+To return
+    
+    http://www.youtube.com/watch?v=z8WXgoBGRb4
+
+### Form helpers
+
 In your forms use:
 
     <%= error_messages_for @resource %>
@@ -47,6 +71,8 @@ And it will return:
     <ul class="my_css_class">
       <li>Error description</li>
     </ul>
+
+### View helpers
 
 For using flash messages, in your layout file, do:
 
@@ -76,6 +102,7 @@ This will return
     
 Made for twitter-bootstrap.
 
+### Mobile helpers
 
 And this helps you to manage mobile views
 
