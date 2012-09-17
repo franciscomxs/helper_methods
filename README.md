@@ -26,7 +26,6 @@ Included helpers:
     youtube('z8WXgoBGRb4')
     youtube_link('z8WXgoBGRb4')
     icon('th-large icon-white')
-    textilize
 
 ### Youtube helpers
 
