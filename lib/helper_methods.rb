@@ -35,6 +35,41 @@ module HelperMethods
     return "#{text} <i class='icon-#{icon}'></i>".html_safe if direction == 'r'
   end
 
+  def nav_link_to(text, path, css_class=nil, li_properties = {}, a_properties = {})
+    lp = li_properties.collect do |k, v|
+      %( #{k}="#{v}") unless k == :class
+    end.join
+    
+    ap = a_properties.collect do |k, v|
+      %( #{k}="#{v}") unless k == :class
+    end.join
+
+    tag_class = %( class="#{css_class unless css_class.nil? }#{' ' if current_page? path and  !css_class.nil?}#{'active' if current_page? path}") if current_page? path or !css_class.nil?
+
+    %(<li#{tag_class}#{lp}>#{link_to text, path, a_properties}</li>).html_safe
+  end
+
+  def is_active_link?(url, condition = nil)
+    url = url_for(url).sub(/\?.*/, '') # ignore GET params
+    case condition
+    when :inclusive, nil
+      !request.fullpath.match(/^#{Regexp.escape(url)}(\/.*|\?.*)?$/).blank?
+    when :exclusive
+      !request.fullpath.match(/^#{Regexp.escape(url)}\/?(\?.*)?$/).blank?
+    when Regexp
+      !request.fullpath.match(condition).blank?
+    when Array
+      controllers = [*condition[0]]
+      actions     = [*condition[1]]
+      (controllers.blank? || controllers.member?(params[:controller])) &&
+      (actions.blank? || actions.member?(params[:action]))
+    when TrueClass
+      true
+    when FalseClass
+      false
+    end
+  end
+
 end
 
 ActionView::Base.send :include, HelperMethods
