@@ -26,6 +26,7 @@ Included helpers:
     youtube('z8WXgoBGRb4')
     youtube_link('z8WXgoBGRb4')
     icon('th-large icon-white')
+    active_link_to 'some string', some_path
 
 ### Youtube helpers
 
@@ -106,6 +107,8 @@ Made for twitter-bootstrap.
 And this helps you to manage mobile views
 
     mobile_device?
+
+We have also a copy of active_link_to gem inside. If you want to use the original gem, please, visit: http://rubygems.org/gems/active_link_to
 
 ## Contributing
 
