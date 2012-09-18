@@ -88,6 +88,14 @@ module HelperMethods
     wrap_tag ? content_tag(wrap_tag, link, :class => css_class) : link
   end
 
+  def active_link_to_class(url, options = {})
+    if is_active_link?(url, options[:active])
+      options[:class_active] || 'active'
+    else
+      options[:class_inactive] || ''
+    end
+  end
+
   def is_active_link?(url, condition = nil)
     url = url_for(url).sub(/\?.*/, '') # ignore GET params
     case condition
