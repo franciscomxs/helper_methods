@@ -14,7 +14,7 @@ module HelperMethods
 
   def flash_messages
     flash.collect do |key, value|
-      content_tag(:p, value, :class => "alert alert-#{key}")
+      content_tag(:p, value, :class => "alert alert-#{key}") unless [true, false, nil].include? value
     end.join.html_safe
   end
 
