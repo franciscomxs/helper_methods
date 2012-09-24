@@ -8,13 +8,15 @@ module HelperMethods
         content_tag :li, value
       end.join
 
-      %(<ul class="#{css_class}">#{error_list}</ul>).html_safe
+      %(<ul data-dismiss="alert" class="#{css_class}">#{error_list}</ul>).html_safe
     end
   end
 
   def flash_messages
     flash.collect do |key, value|
-      content_tag(:p, value, :class => "alert alert-#{key}") unless [true, false, nil].include? value
+      close_icon = %(<a class="close" data-dismiss="alert" href="#">&times;</a>).html_safe
+      content = close_icon + value
+      content_tag(:p, content, :class => "alert alert-#{key}", :data => { :dismiss => "alert"} ) unless [true, false, nil].include? value
     end.join.html_safe
   end
 
