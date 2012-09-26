@@ -5,10 +5,12 @@ module HelperMethods
   def error_messages_for(resource, css_class = "alert alert-error")
     if resource.errors.any?
       error_list = resource.errors.collect do |key, value|
-        content_tag :li, value
+        content = %(<a class="close" data-dismiss="alert" href="#">&times;</a>)
+        content += value
+        content_tag :div, content.html_safe, class: css_class, data: { dismiss: "alert" }
       end.join
 
-      %(<ul data-dismiss="alert" class="#{css_class}">#{error_list}</ul>).html_safe
+      error_list.html_safe
     end
   end
 
