@@ -1,33 +1,42 @@
+# encoding: UTF-8
+
 require "helper_methods/version"
 
 module HelperMethods
 
   def error_messages_for(resource, css_class = "alert alert-error")
     if resource.errors.any?
-      error_list = resource.errors.collect do |key, value|
-        content = %(<a class="close" data-dismiss="alert" href="#">&times;</a>)
-        content += value
-        content_tag :div, content.html_safe, class: css_class, data: { dismiss: "alert" }
+      content = %(<button type="button" class="close" data-dismiss="alert">×</button>)
+      content +=  %(<ul>)      
+      resource.errors.collect do |key, value|
+        content += content_tag :li, value
       end.join
-
-      error_list.html_safe
+      content  += %(</ul>)
+    content_tag :div, content.html_safe, class: css_class
     end
   end
 
   def flash_messages
-    flash.collect do |key, value|
-      close_icon = %(<a class="close" data-dismiss="alert" href="#">&times;</a>).html_safe
-      content = close_icon + value
-      content_tag(:p, content, :class => "alert alert-#{key}", :data => { :dismiss => "alert"} ) unless [true, false, nil].include? value
-    end.join.html_safe
+    if flash.any?
+      content = %(<button type="button" class="close" data-dismiss="alert">×</button>)
+      
+      flash.collect do |key, value|
+        unless [true, false, nil].include?(value)
+          key = :success if key == :notice
+          content += value
+          content_tag(:div, content.html_safe, class: "alert alert-#{key}")
+        end
+      end.join.html_safe
+      #content_tag :div, content.html_safe
+    end
   end
 
   def mobile_device?
   	request.user_agent =~ /Mobile|webOS/
   end
 
-  def youtube(video)
-    "<iframe width='580' height='420' src='http://www.youtube.com/embed/#{video}' frameborder='0' allowfullscreen></iframe>".html_safe
+  def youtube(video, width = 580, height = 420)
+    "<iframe width='#{width}' height='#{height}' src='http://www.youtube.com/embed/#{video}' frameborder='0' allowfullscreen></iframe>".html_safe
   end
  
   def youtube_link(video)
@@ -38,21 +47,6 @@ module HelperMethods
     return "<i class='icon-#{icon}'></i> #{text}".html_safe if direction == 'l'
     return "#{text} <i class='icon-#{icon}'></i>".html_safe if direction == 'r'
   end
-
-  def nav_link_to(text, path, css_class=nil, li_properties = {}, a_properties = {})
-    lp = li_properties.collect do |k, v|
-      %( #{k}="#{v}") unless k == :class
-    end.join
-    
-    ap = a_properties.collect do |k, v|
-      %( #{k}="#{v}") unless k == :class
-    end.join
-
-    tag_class = %( class="#{css_class unless css_class.nil? }#{' ' if current_page? path and  !css_class.nil?}#{'active' if current_page? path}") if current_page? path or !css_class.nil?
-
-    %(<li#{tag_class}#{lp}>#{link_to text, path, a_properties}</li>).html_safe
-  end
-
 
   def active_link_to(*args, &block)
     if block_given?

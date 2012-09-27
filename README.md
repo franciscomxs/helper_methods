@@ -24,6 +24,7 @@ Included helpers:
     flash_messages
     mobile_device?
     youtube('z8WXgoBGRb4')
+    youtube('z8WXgoBGRb4', 720, 480)
     youtube_link('z8WXgoBGRb4')
     icon('th-large icon-white')
     active_link_to 'some string', some_path
@@ -42,6 +43,10 @@ And it will become:
         allowfullscreen>
     </iframe>
 
+You can pass width and height to.
+
+   youtube('z8WXgoBGRb4', 720, 480)
+
 If you want the complete link, use:
 
     youtube_link('z8WXgoBGRb4')
@@ -58,9 +63,11 @@ In your forms use:
 
 And it will return:
 
-    <ul class="alert alert-error">
-      <li>Error description</li>
-    </ul>
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <p>Error description 1</p>
+      <p>Error description 2</p>
+    </div>
 
 Optionaly, you can pass a css class for ul element:
 
@@ -68,9 +75,11 @@ Optionaly, you can pass a css class for ul element:
 
 And it will return:
 
-    <ul class="my_css_class">
-      <li>Error description</li>
-    </ul>
+    <div class="my_css_class">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <p>Error description 1</p>
+      <p>Error description 2</p>
+    </div>
 
 ### View helpers
 
@@ -87,18 +96,20 @@ And in your controller, use:
 
 This will return
 
-    <p class="alert alert-success">Your success message</p>
-    <p class="alert alert-notice">Your alert message</p>
-    <p class="alert alert-error">Your error message</p>
-    <p class="alert alert-info">Your info message</p>
+    <p class="alert alert-success">Your success message is green</p>
+    <p class="alert alert-notice">Your alert message is yellow</p>
+    <p class="alert alert-error">Your error message is red</p>
+    <p class="alert alert-info">Your info message is blue</p>
 
 In your views, use
 
     icon('th-large icon-white')
+    icon('th-large icon-white', 'Some text')
 
 This will return
 
     <i class="th-large icon-white"></i>
+    <i class="th-large icon-white"></i> Some text
     
 Made for twitter-bootstrap.
 
