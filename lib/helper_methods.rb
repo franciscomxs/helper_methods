@@ -4,32 +4,62 @@ require "helper_methods/version"
 
 module HelperMethods
 
-  def error_messages_for(resource, css_class = "alert alert-error")
+  def error_messages_for(resource, style = :bootstrap)
     if resource.errors.any?
-      content = %(<button type="button" class="close" data-dismiss="alert">×</button>)
-      content +=  %(<ul>)      
-      resource.errors.collect do |key, value|
-        content += content_tag :li, value
-      end.join
-      content  += %(</ul>)
+      
+      if style == :bootstrap
+        css_class = "alert alert-error"
+        content = %(<button type="button" class="close" data-dismiss="alert">×</button>)
+        content +=  %(<ul>)      
+        resource.errors.collect do |key, value|
+          content += content_tag :li, value
+        end.join
+        content  += %(</ul>)
+        
+      elsif style == :foundation
+        css_class = "alert-box alert"
+        
+        content = %(<a href="" class="close">&times;</a>)
+        content +=  %(<ul>)      
+        resource.errors.collect do |key, value|
+          content += content_tag :li, value
+        end.join
+        content  += %(</ul>)
+      end      
+      
     content_tag :div, content.html_safe, class: css_class
     end
   end
 
-  def flash_messages
+
+  def flash_messages(style = :bootstrap)
     if flash.any?
-      content = %(<button type="button" class="close" data-dismiss="alert">×</button>)
       
-      flash.collect do |key, value|
-        unless [true, false, nil].include?(value)
-          key = :success if key == :notice
-          content += value
-          content_tag(:div, content.html_safe, class: "alert alert-#{key}")
-        end
-      end.join.html_safe
-      #content_tag :div, content.html_safe
+      if style == :bootstrap
+        
+        content = %(<button type="button" class="close" data-dismiss="alert">×</button>)
+        flash.collect do |key, value|
+          unless [true, false, nil].include?(value)
+            key = :success if key == :notice
+            content += value
+            content_tag(:div, content.html_safe, class: "alert alert-#{key}")
+          end
+        end.join.html_safe
+        
+      elsif style == :foundation
+        content = %(<a href="" class="close">&times;</a>)
+        flash.collect do |key, value|
+          unless [true, false, nil].include?(value)
+            key = :success if key == :notice
+            content += value
+            content_tag(:div, content.html_safe, class: "alert-box #{key}")
+          end
+        end.join.html_safe
+      end
+      
     end
   end
+
 
   def mobile_device?
   	request.user_agent =~ /Mobile|webOS/
@@ -114,6 +144,11 @@ module HelperMethods
       false
     end
   end
+  
+  def gravatar(email, html_options = {})
+      email = Digest::MD5.hexdigest(email)
+      image_tag "http://www.gravatar.com/avatar/#{email}?size=48", html_options
+    end
 
 end
 
