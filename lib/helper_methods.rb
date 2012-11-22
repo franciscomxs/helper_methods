@@ -146,9 +146,13 @@ module HelperMethods
   end
   
   def gravatar(email, html_options = {})
-      email = Digest::MD5.hexdigest(email)
-      image_tag "http://www.gravatar.com/avatar/#{email}?size=48", html_options
-    end
+    email = Digest::MD5.hexdigest(email)
+    image_tag "http://www.gravatar.com/avatar/#{email}?size=48", html_options
+  end
+
+  def attachment_url(file, style = :original)
+    "#{request.protocol}#{request.host_with_port}#{file.url(style)}"
+  end
 
 end
 
