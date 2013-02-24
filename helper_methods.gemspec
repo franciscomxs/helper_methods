@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.version       = HelperMethods::VERSION
   gem.authors       = ["Francisco Martins"]
   gem.email         = ["franciscomxs@gmail.com"]
-  gem.description   = "There are a small collection of simple methods"
+  gem.description   = "A small collection of simple methods"
   gem.summary       = "Helper methods that helps you to DRY"
   gem.homepage      = "https://github.com/franciscomxs/helper_methods"
 

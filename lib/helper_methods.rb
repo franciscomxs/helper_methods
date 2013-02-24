@@ -156,7 +156,7 @@ module HelperMethods
   end
 
   def qr_code_for(data, size)
-    "https://chart.googleapis.com/chart?chs=#{size}&cht=qr&chl=#{data}"
+    image_tag "https://chart.googleapis.com/chart?chs=#{size}&cht=qr&chl=#{data}"
   end
 
 end
