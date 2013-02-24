@@ -155,6 +155,10 @@ module HelperMethods
     "#{protocol}//#{request.host_with_port}#{file.url(style)}"
   end
 
+  def qr_code_for(data, size)
+    "https://chart.googleapis.com/chart?chs=#{size}&cht=qr&chl=#{data}"
+  end
+
 end
 
 ActionView::Base.send :include, HelperMethods

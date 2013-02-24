@@ -28,6 +28,8 @@ Included helpers:
     youtube_link('z8WXgoBGRb4')
     icon('th-large icon-white')
     active_link_to 'some string', some_path
+    attachment_url file, :style # return full url for attachment
+    qr_code_for 'url', 'size in pixels'
 
 ### Youtube helpers
 
