@@ -1,6 +1,6 @@
 # HelperMethods
 
-Simple help methods that helps you to DRY.
+Simple helper methods that helps you to DRY.
 
 ## Installation
 
