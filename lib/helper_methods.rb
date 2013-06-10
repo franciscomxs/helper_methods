@@ -155,6 +155,11 @@ module HelperMethods
     "#{protocol}//#{request.host_with_port}#{file.url(style)}"
   end
 
+  def full_url_for(resource)
+    protocol = request.ssl? ? 'https' : 'http'
+    "#{protocol}//#{request.host_with_port}#{url_for(resource)}"
+  end
+
   def qr_code_for(data, size)
     image_tag "https://chart.googleapis.com/chart?chs=#{size}&cht=qr&chl=#{data}"
   end
