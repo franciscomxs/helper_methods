@@ -29,6 +29,7 @@ Included helpers:
     icon('th-large icon-white')
     active_link_to 'some string', some_path
     attachment_url file, :style # return full url for attachment
+    full_url_for resource
     qr_code_for 'url', 'size in pixels'
 
 ### Youtube helpers
