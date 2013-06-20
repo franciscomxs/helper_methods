@@ -20,17 +20,26 @@ Or install it yourself as:
 
 Included helpers:
 
+    # Common
     error_messages_for @resource
     flash_messages
+    active_link_to 'Home', root_path
+    attachment_url file, :style # return full url for attachment
+    full_url_for resource
+
+    # Mobile
     mobile_device?
+    qr_code_for 'url', 'size in pixels'
+
+    # Youtube
     youtube('z8WXgoBGRb4')
     youtube('z8WXgoBGRb4', 720, 480)
     youtube_link('z8WXgoBGRb4')
-    icon('th-large icon-white')
-    active_link_to 'some string', some_path
-    attachment_url file, :style # return full url for attachment
-    full_url_for resource
-    qr_code_for 'url', 'size in pixels'
+    
+    # Bootstrap
+    bootstrap_icon('th-large icon-white')
+    bootstrap_label('Paid', 'success')
+    bootstrap_badge('10', 'info')
 
 ### Youtube helpers
 

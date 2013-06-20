@@ -65,7 +65,7 @@ module HelperMethods
   	request.user_agent =~ /Mobile|webOS/
   end
 
-  def youtube(video, width = 580, height = 420)
+  def youtube_videop(video, width = 580, height = 420)
     "<iframe width='#{width}' height='#{height}' src='http://www.youtube.com/embed/#{video}' frameborder='0' allowfullscreen></iframe>".html_safe
   end
  
@@ -73,9 +73,19 @@ module HelperMethods
     link_to "www.youtube.com/watch?v=#{video}", "http://www.youtube.com/watch?v=#{video}", class: 'various fancybox-media'
   end
 
-  def icon(icon, text="", direction="l")
+  def bootstrap_icon(icon, text="", direction="l")
     return "<i class='icon-#{icon}'></i> #{text}".html_safe if direction == 'l'
     return "#{text} <i class='icon-#{icon}'></i>".html_safe if direction == 'r'
+  end
+
+  def bootstrap_label(text, name="")
+    name = "label-#{name}" unless name.nil?
+    return %(<span class="label #{name}">#{text}</span>).html_safe
+  end
+
+  def bootstrap_badge(text, name="")
+    name = "badge-#{name}" unless name.nil?
+    return %(<span class="badge #{name}">#{text}</span>).html_safe
   end
 
   def active_link_to(*args, &block)
