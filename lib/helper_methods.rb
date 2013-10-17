@@ -43,18 +43,17 @@ module HelperMethods
   end
 
   def bootstrap_icon(icon, text="", direction="l")
-    return "<i class='icon-#{icon}'></i> #{text}".html_safe if direction == 'l'
-    return "#{text} <i class='icon-#{icon}'></i>".html_safe if direction == 'r'
+    return %(<span class="icon"></span> #{text}).html_safe if direction == 'l'
+    return %(#{text} <span class="icon"></span>).html_safe if direction == 'r'
   end
 
   def bootstrap_label(text, name="")
-    name = "label-#{name}" unless name.nil?
-    return %(<span class="label #{name}">#{text}</span>).html_safe
+    
+    return %(<span class="label label-#{name}">#{text}</span>).html_safe
   end
 
   def bootstrap_badge(text, name="")
-    name = "badge-#{name}" unless name.nil?
-    return %(<span class="badge #{name}">#{text}</span>).html_safe
+    return %(<span class="#{name}">#{text}</span>).html_safe
   end
   
   def gravatar(email, html_options = {})
