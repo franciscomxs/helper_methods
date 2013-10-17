@@ -42,14 +42,13 @@ module HelperMethods
     link_to "www.youtube.com/watch?v=#{video}", "http://www.youtube.com/watch?v=#{video}", class: 'various fancybox-media'
   end
 
-  def bootstrap_icon(icon, text="", direction="l")
-    return %(<span class="icon"></span> #{text}).html_safe if direction == 'l'
-    return %(#{text} <span class="icon"></span>).html_safe if direction == 'r'
+  def bootstrap_icon(name, text="", direction="l")
+    return %(<span class="#{name}"></span> #{text}).html_safe if direction == 'l'
+    return %(#{text} <span class="#{name}"></span>).html_safe if direction == 'r'
   end
 
   def bootstrap_label(text, name="")
-    
-    return %(<span class="label label-#{name}">#{text}</span>).html_safe
+    return %(<span class="#{name}">#{text}</span>).html_safe
   end
 
   def bootstrap_badge(text, name="")
