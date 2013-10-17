@@ -1,20 +1,22 @@
 # -*- encoding: utf-8 -*-
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+$:.push File.expand_path("../lib", __FILE__)
 require 'helper_methods/version'
 
-Gem::Specification.new do |gem|
-  gem.name          = "helper_methods"
-  gem.version       = HelperMethods::VERSION
-  gem.authors       = ["Francisco Martins"]
-  gem.email         = ["franciscomxs@gmail.com"]
-  gem.description   = "A small collection of simple methods"
-  gem.summary       = "Helper methods that helps you to DRY"
-  gem.homepage      = "https://github.com/franciscomxs/helper_methods"
+Gem::Specification.new do |s|
 
-  gem.files         = `git ls-files`.split($/)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.require_paths = ["lib"]
+  s.name        = "helper_methods"
+  s.version     = HelperMethods::VERSION
+  s.platform    = Gem::Platform::RUBY
+  s.licenses    = ["MIT"]
+  s.summary     = "Helper methods that helps you to DRY"
+  s.email       = ["franciscomxs@gmail.com"]
+  s.homepage    = "https://github.com/franciscomxs/helper_methods"
+  s.description = "A small collection of simple methods"
+  s.authors     = ["Francisco Martins"]
+  
+  s.files         = `git ls-files`.split($/)
+  s.executables   = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.require_paths = ["lib"]
 
 end
