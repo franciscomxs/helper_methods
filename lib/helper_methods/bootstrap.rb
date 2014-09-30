@@ -5,8 +5,8 @@ module HelperMethods
     label = content_tag(:span, text, class: "glyphicon-text")
 
     opts = {
-      default: "#{icon}#{(label if text)}",
-      text_first: "#{(label if text)}#{icon}"
+      default: "#{icon} #{(label if text)}",
+      text_first: "#{(label if text)} #{icon}"
     }
 
     opts[config].html_safe
